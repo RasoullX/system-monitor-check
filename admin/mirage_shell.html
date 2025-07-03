@@ -34,7 +34,7 @@
   <img src="https://api.iplogger.org/1px.gif" style="display:none" />
 
   <script>
-    // Simulated logs
+    // 🖥️ Simulated terminal logs
     const logs = [
       "[01:20:01] ✅ PING from 10.0.0.24 accepted",
       "[01:20:03] ⚠️ Unknown header signature detected",
@@ -54,15 +54,14 @@
         setTimeout(typeLog, 800);
       }
     }
-
     typeLog();
 
-    // 🧠 Bot Fingerprint Defense
+    // 🧠 Anti-bot fingerprint detection
     if (navigator.webdriver || navigator.languages.length === 0) {
       window.location.href = "/404.html";
     }
 
-    // 🚫 IP Blocker (customize list)
+    // 🚫 Basic IP blocker (customize this list)
     fetch('https://api64.ipify.org?format=json')
       .then(res => res.json())
       .then(data => {
@@ -72,9 +71,8 @@
         }
       });
 
-    // ⏳ Fallback Trigger after 3 mins or manual double-tap
+    // ⏳ Auto fallback after 3 minutes or double-tap
     let fallbackTriggered = false;
-
     setTimeout(() => {
       if (!fallbackTriggered) {
         fallbackTriggered = true;
@@ -88,6 +86,22 @@
         window.location.href = "/admin/fallback_terminal.html";
       }
     });
+
+    // 🔥 Burn Protocol: Detect tamper and self-destruct
+    fetch("mirage_shell.html")
+      .then(r => {
+        if (!r.ok || r.headers.get("Content-Length") < 1000) {
+          triggerBurn();
+        }
+      })
+      .catch(() => triggerBurn());
+
+    function triggerBurn() {
+      document.body.innerHTML = "<h2 style='color:red;text-align:center;'>🔥 Burn Protocol Engaged — Wiping...</h2>";
+      setTimeout(() => {
+        window.location.href = "https://0.0.0.0";
+      }, 3000);
+    }
   </script>
 </body>
 </html>
