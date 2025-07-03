@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OMEGA Fallback Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: monospace;
+      padding: 20px;
+    }
+    h2 {
+      color: #ff4d4d;
+    }
+    .log {
+      background: #111;
+      padding: 15px;
+      border: 1px solid #444;
+      margin-top: 15px;
+      height: 250px;
+      overflow-y: auto;
+      white-space: pre-line;
+    }
+    .alert {
+      color: red;
+    }
+    .reconnect {
+      margin-top: 20px;
+      color: #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <h2>⚠️ OMEGA Fallback Terminal</h2>
+  <div class="log" id="log">
+    [01:23:54] ❌ Primary terminal connection lost<br>
+    [01:23:56] 🧱 Defense layer fallback mode active<br>
+    [01:23:59] 🧠 OMEGA core cache: isolated<br>
+    [01:24:03] 🔐 Listening for manual reconnection...
+  </div>
+
+  <div class="reconnect">
+    <a href="/admin/mirage_shell.html">↩️ Reconnect to Mirage Shell</a>
+  </div>
+</body>
+</html>
