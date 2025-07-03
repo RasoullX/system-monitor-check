@@ -86,22 +86,9 @@
         window.location.href = "/admin/fallback_terminal.html";
       }
     });
-
-    // 🔥 Burn Protocol: Detect tamper and self-destruct
-    fetch("mirage_shell.html")
-      .then(r => {
-        if (!r.ok || r.headers.get("Content-Length") < 1000) {
-          triggerBurn();
-        }
-      })
-      .catch(() => triggerBurn());
-
-    function triggerBurn() {
-      document.body.innerHTML = "<h2 style='color:red;text-align:center;'>🔥 Burn Protocol Engaged — Wiping...</h2>";
-      setTimeout(() => {
-        window.location.href = "https://0.0.0.0";
-      }, 3000);
-    }
   </script>
+
+  <!-- 🔥 Burn Trigger Module -->
+  <script src="/admin/burn_trigger.js"></script>
 </body>
 </html>
