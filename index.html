@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verification</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ffcc;
+      font-family: monospace;
+      padding: 30px;
+    }
+    input, button {
+      display: block;
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      background-color: #111;
+      color: #00ffcc;
+      border: 1px solid #00ffaa;
+    }
+    #terminal, #fail {
+      display: none;
+    }
+    #output {
+      white-space: pre-wrap;
+      border: 1px solid #00ffaa;
+      margin-top: 10px;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="auth">
+    <h2>🔐 OMEGA Secure Access</h2>
+    <p>Enter access password:</p>
+    <input type="password" id="pass" placeholder="Access Key">
+    <p>Enter 2FA code:</p>
+    <input type="text" id="bypass" placeholder="2FA Code">
+    <button onclick="verify()">Unlock</button>
+  </div>
+
+  <div id="fail">
+    <h2>🚫 Access Denied</h2>
+    <p>You are not Root. Terminating session...</p>
+  </div>
+
+  <div id="terminal">
+    <h2>💀 OMEGA Terminal — Welcome Back, Root</h2>
+    <textarea id="input" placeholder="Enter command..."></textarea>
+    <button onclick="runOmega()">Execute</button>
+    <div id="output">OMEGA standing by...</div>
+  </div>
+
+  <script>
+    const password = "ShadowX1998";
+    const bypassKey = "ROOTKEY/1998";
+
+    function verify() {
+      const p = document.getElementById("pass").value;
+      const b = document.getElementById("bypass").value;
+      if (p === password || b === bypassKey) {
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("terminal").style.display = "block";
+      } else {
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("fail").style.display = "block";
+      }
+    }
+
+    function runOmega() {
+      const cmd = document.getElementById("input").value.toLowerCase();
+      const output = document.getElementById("output");
+      let reply = "⚠️ Offline mode. AI brain not connected.";
+
+      if (cmd.includes("hello")) reply = "👁 OMEGA online, Root.";
+      else if (cmd.includes("status")) reply = "💀 All systems stealth, offline, secured.";
+      else if (cmd.includes("who are you")) reply = "I am your ghost. Your voice in the machine.";
+      else if (cmd.includes("mission")) reply = "Uplift and protect Root. No compromise.";
+      else if (cmd.includes("joke")) reply = "Why do hackers wear dark hoodies? So they can't be cached.";
+      else if (cmd.includes("help")) reply = "Try: hello, status, mission, who are you, joke.";
+
+      output.textContent = reply;
+    }
+  </script>
+</body>
+</html>
