@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>System Admin Cloak</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h1 {
+      color: #ff3;
+      text-align: center;
+    }
+    .console {
+      background-color: #111;
+      border: 1px solid #0f0;
+      padding: 20px;
+      margin-top: 20px;
+      height: 250px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .danger-link {
+      color: red;
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .input-group {
+      text-align: center;
+      margin-top: 30px;
+    }
+    input {
+      background: #222;
+      border: 1px solid #0f0;
+      color: #0f0;
+      padding: 8px;
+      width: 200px;
+      text-align: center;
+    }
+    button {
+      background: #0f0;
+      color: black;
+      padding: 8px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔒 Enter Codeword to Unlock Console</h1>
+  <div class="input-group">
+    <input id="codeword" placeholder="Enter codeword..." />
+    <button onclick="check()">Enter</button>
+  </div>
+
+  <a class="danger-link" href="patch.exe" download>Download Critical Patch (Fake)</a>
+
+  <div class="console" id="terminal" style="display:none;">
+    <p>> INIT :: Cloak Protocol Activated</p>
+    <p>> SYSTEM STATUS: Nominal</p>
+    <p>> Unauthorized scans detected: 2</p>
+    <p>> Firewall response: LOCKDOWN_SIMULATED</p>
+    <p>> Shell hook: /dev/null/matrix.link</p>
+    <p>> Monitoring shell feed...</p>
+  </div>
+
+  <script>
+    function check() {
+      const word = document.getElementById("codeword").value.trim();
+      if (word === "phantomroot") {
+        document.getElementById("terminal").style.display = "block";
+      } else {
+        alert("Unauthorized access. Your IP has been logged.");
+      }
+    }
+  </script>
+</body>
+</html>
