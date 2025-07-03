@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OMEGA Sentinel Shell</title>
+  <style>
+    body {
+      background: black;
+      color: #00ffcc;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .terminal {
+      background: #111;
+      padding: 15px;
+      border: 1px solid #444;
+      height: 300px;
+      overflow-y: auto;
+    }
+    .input {
+      margin-top: 20px;
+    }
+    input {
+      width: 80%;
+      padding: 8px;
+      background: #222;
+      color: #0f0;
+      border: 1px solid #0f0;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .log {
+      color: #33ff33;
+    }
+    .warn {
+      color: #ffaa00;
+    }
+    .alert {
+      color: #ff4444;
+    }
+  </style>
+</head>
+<body>
+  <h2>🛡️ Tier V OMEGA Cloak Shell</h2>
+  <div class="terminal" id="output">
+    <p class="warn">[!] Unauthorized access attempt will be logged.</p>
+    <p class="log">root@omega:/home$</p>
+  </div>
+  <div class="input">
+    <input id="cmd" placeholder="Enter command or access code..." />
+    <button onclick="process()">Run</button>
+  </div>
+
+  <script>
+    let output = document.getElementById('output');
+    function log(text, type = "log") {
+      let line = document.createElement('p');
+      line.className = type;
+      line.textContent = text;
+      output.appendChild(line);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function process() {
+      let cmd = document.getElementById('cmd').value.trim().toLowerCase();
+      document.getElementById('cmd').value = "";
+
+      if (cmd === "phantomroot") {
+        log("Access code accepted. Redirecting to terminal...", "log");
+        setTimeout(() => {
+          window.location.href = "https://system-monitor-check.vercel.app/terminal/";
+        }, 2000);
+      } else if (cmd === "whoami") {
+        log("root");
+      } else if (cmd === "nmap 127.0.0.1") {
+        log("Scanning localhost...", "warn");
+        setTimeout(() => {
+          log("Open ports: 22, 80, 443", "log");
+        }, 1000);
+      } else if (cmd === "sudo su") {
+        log("Permission denied: you are not in the sudoers file", "alert");
+      } else {
+        log("Command not recognized or denied: " + cmd, "alert");
+      }
+    }
+  </script>
+</body>
+</html>
