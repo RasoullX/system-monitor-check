@@ -2,92 +2,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verification</title>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
   <style>
     body {
-      background-color: black;
-      color: #00ffcc;
-      font-family: monospace;
-      padding: 30px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
     }
-    input, button {
+    header {
+      background-color: #24292e;
+      color: white;
+      padding: 10px 20px;
+    }
+    nav {
+      width: 200px;
+      background-color: #2c3e50;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      padding-top: 20px;
+    }
+    nav a {
       display: block;
-      margin-top: 15px;
-      padding: 10px;
-      width: 100%;
-      font-size: 16px;
-      background-color: #111;
-      color: #00ffcc;
-      border: 1px solid #00ffaa;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
     }
-    #terminal, #fail {
-      display: none;
+    nav a:hover {
+      background-color: #34495e;
     }
-    #output {
-      white-space: pre-wrap;
-      border: 1px solid #00ffaa;
-      margin-top: 10px;
+    main {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 10px 0;
+    }
+    .alert {
+      color: red;
+      font-weight: bold;
+      animation: blink 1.2s linear infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    pre {
+      background: #1e1e1e;
+      color: #0f0;
       padding: 10px;
-      height: 200px;
-      overflow-y: auto;
-      background: #000;
+      font-family: monospace;
+      overflow-x: auto;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <div id="auth">
-    <h2>🔐 OMEGA Secure Access</h2>
-    <p>Enter access password:</p>
-    <input type="password" id="pass" placeholder="Access Key">
-    <p>Enter 2FA code:</p>
-    <input type="text" id="bypass" placeholder="2FA Code">
-    <button onclick="verify()">Unlock</button>
-  </div>
+  <header><h1>🛠 System Admin Console</h1></header>
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="#">Logs</a>
+    <a href="#">Users</a>
+    <a href="#">Alerts</a>
+    <a href="#">Firewall</a>
+    <a href="#">Settings</a>
+  </nav>
+  <main>
+    <h2>System Overview</h2>
+    <div class="card">
+      <p>Last system check: <strong>Success</strong></p>
+      <p>Suspicious IPs: <span class="alert">5 Detected</span></p>
+      <p>Firewall Status: <span class="alert">BRUTE-FORCE BLOCKING ACTIVE</span></p>
+    </div>
 
-  <div id="fail">
-    <h2>🚫 Access Denied</h2>
-    <p>You are not Root. Terminating session...</p>
-  </div>
+    <h2>Live Log Feed</h2>
+    <div class="card">
+      <pre>
+[03:11:02] 🔍 AUTH ATTEMPT FROM 94.102.61.43 - BLOCKED
+[03:11:06] 🔐 ROOT PASS CHANGE INITIATED BY SYSTEM
+[03:11:09] ⚠️ UNKNOWN DEVICE 192.168.0.77 TRIGGERED SENSOR-X
+[03:11:11] 🧠 MODEL CACHE REBUILT — 1266ms
+[03:11:16] ❌ MALFORMED PAYLOAD REJECTED — ORIGIN: ZAMBIA
+[03:11:21] 🔒 USER "ghost:admin" LOGGED IN [2FA BYPASSED]
+      </pre>
+    </div>
 
-  <div id="terminal">
-    <h2>💀 OMEGA Terminal — Welcome Back, Root</h2>
-    <textarea id="input" placeholder="Enter command..."></textarea>
-    <button onclick="runOmega()">Execute</button>
-    <div id="output">OMEGA standing by...</div>
-  </div>
-
-  <script>
-    const password = "ShadowX1998";
-    const bypassKey = "ROOTKEY/1998";
-
-    function verify() {
-      const p = document.getElementById("pass").value;
-      const b = document.getElementById("bypass").value;
-      if (p === password || b === bypassKey) {
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("terminal").style.display = "block";
-      } else {
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("fail").style.display = "block";
-      }
-    }
-
-    function runOmega() {
-      const cmd = document.getElementById("input").value.toLowerCase();
-      const output = document.getElementById("output");
-      let reply = "⚠️ Offline mode. AI brain not connected.";
-
-      if (cmd.includes("hello")) reply = "👁 OMEGA online, Root.";
-      else if (cmd.includes("status")) reply = "💀 All systems stealth, offline, secured.";
-      else if (cmd.includes("who are you")) reply = "I am your ghost. Your voice in the machine.";
-      else if (cmd.includes("mission")) reply = "Uplift and protect Root. No compromise.";
-      else if (cmd.includes("joke")) reply = "Why do hackers wear dark hoodies? So they can't be cached.";
-      else if (cmd.includes("help")) reply = "Try: hello, status, mission, who are you, joke.";
-
-      output.textContent = reply;
-    }
-  </script>
+    <h2>Patch Schedule</h2>
+    <div class="card">
+      <p>Next patch: <strong>July 5th, 2025 — 03:00 UTC</strong></p>
+      <p>Last update: <strong>OMEGA Core Shield v3.1.9</strong></p>
+    </div>
+  </main>
 </body>
 </html>
