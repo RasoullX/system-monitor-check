@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mirage V Console — Adaptive Shell</title>
   <style>
     body {
@@ -34,7 +34,7 @@
   <img src="https://api.iplogger.org/1px.gif" style="display:none" />
 
   <script>
-    // Logs
+    // Simulated logs
     const logs = [
       "[01:20:01] ✅ PING from 10.0.0.24 accepted",
       "[01:20:03] ⚠️ Unknown header signature detected",
@@ -57,12 +57,12 @@
 
     typeLog();
 
-    // 🧠 Bot Fingerprint Detection
+    // 🧠 Bot Fingerprint Defense
     if (navigator.webdriver || navigator.languages.length === 0) {
       window.location.href = "/404.html";
     }
 
-    // 🛑 Bad IP Filter (customize list)
+    // 🚫 IP Blocker (customize list)
     fetch('https://api64.ipify.org?format=json')
       .then(res => res.json())
       .then(data => {
@@ -71,6 +71,23 @@
           window.location.href = "/404.html";
         }
       });
+
+    // ⏳ Fallback Trigger after 3 mins or manual double-tap
+    let fallbackTriggered = false;
+
+    setTimeout(() => {
+      if (!fallbackTriggered) {
+        fallbackTriggered = true;
+        window.location.href = "/admin/fallback_terminal.html";
+      }
+    }, 180000); // 3 minutes
+
+    document.addEventListener("dblclick", (e) => {
+      if (!fallbackTriggered && e.target.id === "terminal") {
+        fallbackTriggered = true;
+        window.location.href = "/admin/fallback_terminal.html";
+      }
+    });
   </script>
 </body>
 </html>
