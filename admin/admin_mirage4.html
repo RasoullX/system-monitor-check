@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>System Mirage Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffee;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .console {
+      background: #111;
+      border: 1px solid #333;
+      padding: 15px;
+      height: 300px;
+      overflow-y: auto;
+    }
+    .ping { color: #00ff00; }
+    .warn { color: #ffaa00; }
+    .error { color: #ff4444; }
+    a.decoy { color: red; display: block; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <h2>🛡️ Mirage IV Console (Deceptive Shell)</h2>
+  <div class="console">
+    <p class="ping">[13:01:05] ping from 10.0.0.44 accepted</p>
+    <p class="warn">[13:01:08] unknown browser fingerprint attempting bypass</p>
+    <p class="error">[13:01:12] unauthorized sysadmin attempt blocked</p>
+    <p class="ping">[13:01:14] motion analysis spoofed</p>
+  </div>
+  <a href="https://malicious.example.com" class="decoy">Download Patch: v4.4.2a</a>
+</body>
+</html>
