@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mirage Shell</title>
+  <style>
+    body { background: black; color: #00ffaa; font-family: monospace; padding: 20px; }
+    .log-line { margin: 5px 0; }
+    .green { color: #00ff00; }
+    .red { color: #ff4444; }
+    .yellow { color: #ffff66; }
+  </style>
+</head>
+<body>
+  <h2>🛡 Mirage V Console — Adaptive Shell</h2>
+  <div id="terminal"></div>
+  <script>
+    const logs = [
+      "[01:20:01] ✅ PING from 10.0.0.2 acknowledged",
+      "[01:20:03] ⚠️ Unknown header sniffing browser fingerprint",
+      "[01:20:05] ❌ Unauthorized console tampering blocked",
+      "[01:20:08] 👁 Motion spoof active",
+      "[01:20:10] 🧠 Deploying fallback domain...",
+    ];
+    const term = document.getElementById('terminal');
+    logs.forEach((line, i) => {
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.className = 'log-line';
+        div.textContent = line;
+        term.appendChild(div);
+      }, i * 1500);
+    });
+  </script>
+</body>
+</html>
